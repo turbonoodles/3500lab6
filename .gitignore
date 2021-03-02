@@ -13,4 +13,5 @@
 # Do not ignore src directories
 #####
 !**/src/**
+!**/build_project.tcl
 
