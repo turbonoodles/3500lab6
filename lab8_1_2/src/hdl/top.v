@@ -28,6 +28,7 @@ module top(
     );
 
 // main clock divider from clocking wizard
+wire clk_5MHz;
 clk_wiz_0 clocky(
     // Clock out ports
     .clk_out1(clk_5MHz),     // output clk_out1
@@ -40,6 +41,8 @@ clk_wiz_0 clocky(
 // divide 5MHz clock down to 500Hz
 parameter divisor = 10000;
 reg [15:0] count = 0;
+reg clk_500Hz = 0;
+
 always @(posedge clk_5MHz) begin
     if (count == 0) begin
         count <= divisor - 1;
