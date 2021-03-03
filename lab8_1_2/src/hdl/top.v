@@ -91,6 +91,7 @@ parameter msd = 8'b10;
 reg [7:0] next_state;
 reg [7:0] state = lsd;
 
+// next state logic
 always @(state) begin
     case (state)
     // we just want to switch between digits
@@ -106,6 +107,7 @@ always @(state) begin
     endcase
 end
 
+// change state machine at 500Hz
 always @(posedge clk_500Hz) begin
     // advance the state machine
     state <= next_state;
