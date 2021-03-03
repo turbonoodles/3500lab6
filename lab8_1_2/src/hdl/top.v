@@ -78,7 +78,7 @@ lab2_2_1_partA numberthing(
 );
 
 wire [3:0] decode_digit;
-assign decode_digit = digit
+assign decode_digit = digit;
 bcdto7segment_dataflow decoder (
     .bcd_in (decode_digit),
     .seg (cathodes)
