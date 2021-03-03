@@ -94,28 +94,21 @@ reg [7:0] state = lsd;
 always @(state) begin
     case (state)
     // we just want to switch between digits
-        lsd: next_state <= msd;
-        msd: next_state <= lsd;
+        lsd: begin
+            next_state <= msd;
+            digit <= bcd_digit;
+        end
+        msd: begin
+            next_state <= lsd;
+            digit <= ten? 4'b1:4'b0; // actual mux
+        end
         default: next_state <= 0; // trap broken state
     endcase
 end
 
 always @(posedge clk_500Hz) begin
-    
     // advance the state machine
     state <= next_state;
-
-    // drive the display outputs
-    case (state)
-        // kinda-mux
-        lsd: begin
-            digit <= bcd_digit;
-        end
-        msd: begin
-            digit <= ten? 1:0; // actual mux
-        end
-    endcase
-    
 end
 
 // output decoding from state machine
