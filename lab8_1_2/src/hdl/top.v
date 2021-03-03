@@ -66,9 +66,10 @@ end
 */
 
 // somewhere for the digit to transfer over
-wire [3:0] bcd_digit;
+wire [3:0] bcd_digit; // input to the mux
+reg [3:0] digit;
 // need to transfer the decoded digit into the logic too now
-wire [6:0] seg0;
+wire ten;
 
 lab2_2_1_partA numberthing(
     .v (val),
