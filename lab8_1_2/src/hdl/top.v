@@ -23,9 +23,8 @@
 module top(
     input wire clk_100MHz, // clock input to DCM
     input wire [3:0] val,
-    output reg [6:0] cathodes, // seven segment display cathodes
-    output reg ten,
-    output reg [7:0] anodes
+    output wire [6:0] cathodes, // seven segment display cathodes
+    output wire [7:0] anodes
     );
 
 // main clock divider from clocking wizard
