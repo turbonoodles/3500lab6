@@ -89,7 +89,7 @@ parameter msd = 8'b10;
 
 // next state logic, encoded like anodes
 reg [7:0] next_state;
-reg [7:0] state;
+reg [7:0] state = lsd;
 
 always @(state) begin
     case (state)
