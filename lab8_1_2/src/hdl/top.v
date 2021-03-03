@@ -84,8 +84,8 @@ bcdto7segment_dataflow decoder (
 
 // Simple FSM for the anode driver
 // state definition
-parameter lsd = 1;
-parameter msd = 2;
+parameter lsd = 8'b1;
+parameter msd = 8'b10;
 
 // next state logic, encoded like anodes
 reg [7:0] next_state;
