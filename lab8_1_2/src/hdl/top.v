@@ -94,7 +94,7 @@ reg [7:0] next_state;
 reg [7:0] state = lsd;
 
 // next state logic
-always @(state) begin
+always @(state, bcd_digit) begin
     case (state)
     // we just want to switch between digits
         lsd: begin
