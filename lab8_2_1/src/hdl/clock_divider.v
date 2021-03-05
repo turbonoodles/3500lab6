@@ -40,7 +40,10 @@ always @( posedge clk_in, posedge reset ) begin
         if ( count == 0 ) begin
             // terminal count reached
             count <= divisor;
-            clk_out <= ~clk_out;
+            clk_out <= 1;
+        end
+        else if ( count == ( divisor - 1) ) begin
+            clk_out <= 0; // go high for one clock cycle
         end
         else begin
             // normal decrement
