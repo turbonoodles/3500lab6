@@ -63,21 +63,25 @@ clock_divider clk_div_500Hz(
 // dual BCD counter
 wire nine; // high when the ones place is 9
 counter_binary_0 ones_ctr (
-    .CLK( clk_1Hz ),          // input wire CLK
+    .CLK( clk_5MHz ),          // input wire CLK
     .THRESH0( nine ),  // output wire THRESH0
     .SCLR ( clear_ones ),
-    .CE (enable),
+    .CE (enable_ones),
     .Q(ones_digit)              // output wire [3 : 0] Q
 );
 
 wire ninety; 
 counter_binary_0 tens_ctr (
-    .CLK( clk_1Hz ),          // input wire CLK
+    .CLK( clk_5MHz ),          // input wire CLK
     .THRESH0( ninety ),  // output wire THRESH0
     .SCLR ( clear_tens ),
-    .CE ( nine) ,  
+    .CE ( enable_tens ) ,  
     .Q ( tens_digit )              // output wire [3 : 0] Q
 );
+
+// enable clocking only when the 1Hz clock is high
+assign enable_ones = clk_1Hz & enable;
+assign enable_tens = clk_1Hz & nine & enable;
 
 // clear the counter back to zero when it reaches 99, or the reset is pushed
 assign clear_tens = (nine & ninety) | reset;
