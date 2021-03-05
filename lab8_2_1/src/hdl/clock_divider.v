@@ -44,6 +44,7 @@ always @( posedge clk_in, posedge reset ) begin
         end
         else if ( count == ( divisor - 1) ) begin
             clk_out <= 0; // go high for one clock cycle
+            count <= count - 1;
         end
         else begin
             // normal decrement
