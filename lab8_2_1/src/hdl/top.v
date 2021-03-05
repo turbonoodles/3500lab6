@@ -46,7 +46,7 @@ clk_wiz_0 clockgen_5MHz(
 // more clock division
 wire clk_1Hz;
 clock_divider clk_div_1Hz(
-    .reset (reset),
+    .reset (0),
     .divisor (2500000),
     .clk_in (clk_5MHz),
     .clk_out (clk_1Hz)
@@ -54,7 +54,7 @@ clock_divider clk_div_1Hz(
 
 wire clk_500Hz;
 clock_divider clk_div_500Hz(
-    .reset (reset),
+    .reset (0),
     .divisor (10000),
     .clk_in (clk_5MHz),
     .clk_out (clk_500Hz)
